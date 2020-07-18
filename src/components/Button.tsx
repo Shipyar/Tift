@@ -1,6 +1,8 @@
 import React from 'react'
 import { RectButton } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+
+import { Text } from './index'
 
 interface ButtonProps {
    label: string;
@@ -17,8 +19,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
    },
    label: {
-      fontSize: 15,
-      fontFamily: 'SFProText-Regular',
       textAlign: 'center',
    }
 })
@@ -28,7 +28,7 @@ const Button = ({ label, variant, onPress }: ButtonProps) => {
    const color = variant === 'primary' ? '#fff' : '#0C0D34';
    return (
       <RectButton style={[styles.container, { backgroundColor }]} {... { onPress }}>
-         <Text style={[styles.label, { color }]}>{label}</Text>
+         <Text variant="body" style={[styles.label, { color }]}>{label}</Text>
       </RectButton>
    )
 }

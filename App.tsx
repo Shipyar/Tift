@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ThemeProvider } from '@shopify/restyle';
 
-import { Onboarding } from './src/Authentication/Onboarding';
-import { LoadAssets } from './src/components';
+import { Onboarding, Welcome } from './src/Authentication';
+import { LoadAssets, theme } from './src/components';
 
 const AuthenticationStack = createStackNavigator();
 
@@ -16,13 +17,16 @@ const fonts = {
 const AuthenticationNavigator = () => (
   <AuthenticationStack.Navigator headerMode="none">
     <AuthenticationStack.Screen name="Onboarding" component={Onboarding} />
+    <AuthenticationStack.Screen name="Welcome" component={Welcome} />
   </AuthenticationStack.Navigator>
 );
 
 export default function App() {
   return (
-    <LoadAssets {... { fonts }}>
-      <AuthenticationNavigator />
-    </LoadAssets>
+    <ThemeProvider theme={theme}>
+      <LoadAssets {... { fonts }}>
+        <AuthenticationNavigator />
+      </LoadAssets>
+    </ThemeProvider>
   );
 }

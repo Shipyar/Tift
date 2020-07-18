@@ -13,6 +13,7 @@ const BORDER_RADIUS = 75;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFF',
   },
   slider: {
     height: 0.61 * height,
@@ -24,13 +25,12 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     flex: 1,
-    flexDirection: 'row',
     backgroundColor: 'white',
     borderTopLeftRadius: BORDER_RADIUS,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    height: BORDER_RADIUS * 2,
+    height: BORDER_RADIUS,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -38,11 +38,32 @@ const styles = StyleSheet.create({
 });
 
 const slides = [
-  { title: 'Relaxed', subTitle: 'Find Your Workouts', description: 'Confused about your workouts? We are here to help', color: '#BFEAF5' },
-  { title: 'Playful', subTitle: 'Share Your Workouts', description: 'Have you got an ab busting workout? Share it with the community', color: '#BEECC4' },
-  { title: 'Exentric', subTitle: 'Keep on Track', description: 'Keep your workouts in an easy to view plan.', color: '#FFE4D9' },
-  { title: 'Funky', subTitle: 'Look Good, Feel Good', description: 'When you stick to your goals you will feel great!', color: '#FFDDDD' }
-]
+  {
+    title: "Relaxed",
+    subTitle: "Find Your Workouts",
+    description: "Confused about your workouts? We are here to help",
+    color: "#BFEAF5",
+  },
+  {
+    title: "Playful",
+    subTitle: "Share Your Workouts",
+    description:
+      "Have you got an ab busting workout? Share it with the community",
+    color: "#BEECC4",
+  },
+  {
+    title: "Exentric",
+    subTitle: "Keep on Track",
+    description: "Keep your workouts in an easy to view plan.",
+    color: "#FFE4D9",
+  },
+  {
+    title: "Funky",
+    subTitle: "Look Good, Feel Good",
+    description: "When you stick to your goals you will feel great!",
+    color: "#FFDDDD",
+  },
+];
 
 const Onboarding = () => {
   const scrollRef = useRef<Animated.ScrollView>(null);
@@ -76,34 +97,35 @@ const Onboarding = () => {
             backgroundColor,
           }}
         />
-        <Animated.View
-          style={[
-            styles.footerContent,
-            {
-              width: width * slides.length,
+        <View style={styles.footerContent}>
+          <View style={styles.pagination}>
+            {slides.map((_, index) => (
+              <Dot key={index} currentIndex={divide(x, width)} {...{ index }} />
+            ))}
+          </View>
+          <Animated.View
+            style={{
               flex: 1,
               transform: [{ translateX: multiply(x, -1) }],
-            },
-          ]}
-        >
-          <View style={styles.pagination}>
-            {slides.map((_, index) => (<Dot key={index} currentIndex={divide(x, width)} {...{index}} />))}
-          </View>
-          {slides.map(({ subTitle, description }, index) => (
-            <SubSlide
-              key={index}
-              last={index === slides.length - 1}
-              {...{ subTitle, description }}
-              onPress={() => {
-                if (scrollRef.current) {
-                  scrollRef.current
-                    .getNode()
-                    .scrollTo({ x: width * (index + 1), animated: true });
-                }
-              }}
-            />
-          ))}
-        </Animated.View>
+              width: width * slides.length,
+              flexDirection: 'row',
+            }}>
+            {slides.map(({ subTitle, description }, index) => (
+              <SubSlide
+                key={index}
+                last={index === slides.length - 1}
+                {...{ subTitle, description }}
+                onPress={() => {
+                  if (scrollRef.current) {
+                    scrollRef.current
+                      .getNode()
+                      .scrollTo({ x: width * (index + 1), animated: true });
+                  }
+                }}
+              />
+            ))}
+          </Animated.View>
+        </View>
       </View>
     </View>
   );
