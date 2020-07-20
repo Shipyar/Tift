@@ -1,38 +1,48 @@
-import React from 'react'
-import { RectButton } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { RectButton } from "react-native-gesture-handler";
+import { StyleSheet } from "react-native";
+import { useTheme } from "@shopify/restyle";
 
-import { Text } from './index'
+import { Theme, Text } from "./Theme";
 
 interface ButtonProps {
-   label: string;
-   variant: 'default' | 'primary';
-   onPress: () => void;
+  label: string;
+  variant: "default" | "primary" | "transparent";
+  onPress: () => void;
 }
 
 const styles = StyleSheet.create({
-   container: {
-      borderRadius: 25,
-      height: 50,
-      width: 245,
-      alignItems: 'center',
-      justifyContent: 'center',
-   },
-   label: {
-      textAlign: 'center',
-   }
-})
+  container: {
+    borderRadius: 25,
+    height: 50,
+    width: 245,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 const Button = ({ label, variant, onPress }: ButtonProps) => {
-   const backgroundColor = variant === 'primary' ? '#2CB9B0' : 'rgba(12, 13, 52, 0.05)';
-   const color = variant === 'primary' ? '#fff' : '#0C0D34';
-   return (
-      <RectButton style={[styles.container, { backgroundColor }]} {... { onPress }}>
-         <Text variant="body" style={[styles.label, { color }]}>{label}</Text>
-      </RectButton>
-   )
-}
+  const theme = useTheme<Theme>();
+  const backgroundColor =
+    variant === "primary"
+    ? theme.colors.green
+    : variant === "transparent"
+    ? "transparent"
+    : theme.colors.grey;
+  const color =
+    variant === "primary" ? theme.colors.white : theme.colors.bodyText;
+  return (
+    <RectButton
+      style={[styles.container, { backgroundColor }]}
+      {...{ onPress }}
+    >
+      <Text variant="button" style={{ color }}>
+        {label}
+      </Text>
+    </RectButton>
+  );
+};
 
-Button.defaultProps = { variant: 'default' }
+Button.defaultProps = { variant: "default" };
 
-export default Button
+export default Button;

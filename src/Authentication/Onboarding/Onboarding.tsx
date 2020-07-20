@@ -7,6 +7,8 @@ import Slide from './Slide';
 import SubSlide from './SubSlide';
 import Dot from './Dot';
 
+import { Routes, StackNavigationProps } from '../../components/Navigation';
+
 const { width, height } = Dimensions.get('window');
 const BORDER_RADIUS = 75;
 
@@ -65,7 +67,7 @@ const slides = [
   },
 ];
 
-const Onboarding = () => {
+const Onboarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scrollRef = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler()
   const backgroundColor = interpolateColor(x, {
@@ -110,20 +112,24 @@ const Onboarding = () => {
               width: width * slides.length,
               flexDirection: 'row',
             }}>
-            {slides.map(({ subTitle, description }, index) => (
-              <SubSlide
-                key={index}
-                last={index === slides.length - 1}
-                {...{ subTitle, description }}
-                onPress={() => {
-                  if (scrollRef.current) {
-                    scrollRef.current
-                      .getNode()
-                      .scrollTo({ x: width * (index + 1), animated: true });
-                  }
-                }}
-              />
-            ))}
+            {slides.map(({ subTitle, description }, index) => {
+              const last = index === slides.length - 1;
+              return (
+                <SubSlide
+                  key={index}
+                  {...{ subTitle, description, last }}
+                  onPress={() => {
+                    if (last) {
+                      navigation.navigate('Welcome');
+                    } else {
+                      scrollRef.current
+                        ?.getNode()
+                        .scrollTo({ x: width * (index + 1), animated: true });
+                    }
+                  }}
+                />
+              )
+            })}
           </Animated.View>
         </View>
       </View>
