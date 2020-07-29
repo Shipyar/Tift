@@ -4,7 +4,7 @@ import { ThemeProvider } from '@shopify/restyle';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { LoadAssets, theme } from './src/components';
-import { AuthenticationNavigator } from './src/Authentication';
+import { AuthenticationNavigator } from './src/navigation/authenticationStack';
 
 const fonts = {
   'SFProText-Bold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),

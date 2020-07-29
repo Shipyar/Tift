@@ -1,10 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Routes } from '../components/Navigation';
-import Welcome from './Welcome';
-import Onboarding from './Onboarding';
-import Login from './Login';
+import { Routes } from './Navigation';
+import Welcome from '../screens/Welcome';
+import Onboarding from '../screens/Onboarding';
+import Login from '../screens/Login';
 
 const AuthenticationStack = createStackNavigator<Routes>();
 export const AuthenticationNavigator = () => (

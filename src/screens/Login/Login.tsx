@@ -21,7 +21,10 @@ const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
 
   return (
     <Container {...{footer}}>
-      <View />
+      <Box padding="xl">
+        <Text variant="title" textAlign="center">Welcome Back</Text>
+        <Text variant="body" textAlign="center">Use your credentials below to login to your account</Text>
+      </Box>
     </Container>
   )
 }
