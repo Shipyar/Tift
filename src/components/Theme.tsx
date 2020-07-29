@@ -10,6 +10,10 @@ const palette = {
 
   black: "#0B0B0B",
   white: "#FFFFFF",
+  
+
+  // tift specific
+  appGreen: '#3FC85F',
 };
 
 const theme = {
@@ -20,6 +24,7 @@ const theme = {
     grey: palette.grey,
     green: palette.green,
     welcomeGrey: '#F4F0EF',
+    tiftGreen: palette.appGreen,
   },
   spacing: {
     s: 8,

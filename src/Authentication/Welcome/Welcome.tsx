@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native'
 import { Box, Text } from '../../components/Theme';
 import { Button } from '../../components';
 
+import { Routes, StackNavigationProps } from '../../components/Navigation';
+
 interface WelcomeProps {
    
 }
 
-const Welcome = () => {
+const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
    return (
       <Box flex={1} backgroundColor="white">
          <Box flex={1} borderBottomRightRadius={40} backgroundColor="welcomeGrey"></Box>
@@ -30,7 +32,7 @@ const Welcome = () => {
             >
                <Text variant="smTitle">Lets get started</Text>
                <Text variant="body">Login to your account below or signup for the new you.</Text>
-               <Button variant="primary" label="Have and account? Login" onPress={() => console.log('update me')} />
+               <Button variant="primary" label="Have and account? Login" onPress={() => navigation.navigate('Login')} />
                <Button label="Join us, it's Free" onPress={() => console.log('update me')} />
                <Button variant="transparent" label="Forgot password?" onPress={() => console.log('update me')} />
             </Box>
