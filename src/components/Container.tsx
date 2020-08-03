@@ -7,6 +7,7 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width } = Dimensions.get("window");
 const height = width * 0.66;
 
+
 interface ContainerProps {
   children: ReactNode;
   footer: ReactNode;
@@ -18,7 +19,7 @@ const Container = ({ children, footer }: ContainerProps) => {
   return (
     <Box flex={1} backgroundColor="titleText">
       <Box backgroundColor="white">
-        <Box borderBottomLeftRadius={40} overflow="hidden" height={height * 0.61}>
+        <Box borderBottomLeftRadius="round" overflow="hidden" height={height * 0.61}>
           <Box style={{ width, height }} backgroundColor="tiftGreen" />
         </Box>
       </Box>
@@ -33,16 +34,15 @@ const Container = ({ children, footer }: ContainerProps) => {
           backgroundColor="tiftGreen"
         />
         <Box
-          borderRadius={40}
+          borderRadius="round"
           borderTopLeftRadius={0}
           backgroundColor="white"
           flex={1}
         >
           {children}
         </Box>
-        <Box paddingTop="m">
+        <Box paddingBottom={insets.bottom} paddingTop="m">
           {footer}
-          <Box height={insets.bottom} />
         </Box>
       </Box>
     </Box>

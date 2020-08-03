@@ -14,7 +14,7 @@ const SocialIcon = ({ children }: SocialIconProps) => {
       backgroundColor="white"
       width={44}
       height={44}
-      borderRadius={22}
+      borderRadius="l"
       justifyContent="center"
       alignItems="center"
     >
@@ -27,7 +27,7 @@ const SocialLogin = () => {
   return (
     <Box flexDirection="row" justifyContent="center">
       <SocialIcon>
-        <Icon name="icon-google" fill="#000" width={20} height={20} />
+        <Icon name="icon-google" fill="#000" width={20} height={20} stroke="none" />
       </SocialIcon>
     </Box>
   );

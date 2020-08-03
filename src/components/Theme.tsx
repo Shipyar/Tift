@@ -14,6 +14,8 @@ const palette = {
 
   // tift specific
   appGreen: '#3FC85F',
+
+  warning: '#F8AEAE',
 };
 
 const theme = {
@@ -25,12 +27,20 @@ const theme = {
     green: palette.green,
     welcomeGrey: '#F4F0EF',
     tiftGreen: palette.appGreen,
+    warning: palette.warning,
   },
   spacing: {
     s: 8,
     m: 16,
     l: 24,
     xl: 40,
+  },
+  borderRadii: {
+    s: 4,
+    m: 10,
+    l: 25,
+    xl: 75,
+    round: 40,
   },
   textVariants: {
     hero: {

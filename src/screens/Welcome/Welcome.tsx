@@ -12,8 +12,8 @@ interface WelcomeProps {
 const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
    return (
       <Box flex={1} backgroundColor="white">
-         <Box flex={1} borderBottomRightRadius={40} backgroundColor="welcomeGrey"></Box>
-         <Box flex={1} borderTopLeftRadius={40}>
+         <Box flex={1} borderBottomRightRadius="round" backgroundColor="welcomeGrey"></Box>
+         <Box flex={1} borderTopLeftRadius="round">
             <Box 
                backgroundColor="welcomeGrey"
                position="absolute"
@@ -24,7 +24,7 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
             />
             <Box
                backgroundColor="white"
-               borderTopLeftRadius={40}
+               borderTopLeftRadius="round"
                flexGrow={1}
                justifyContent="space-evenly"
                alignItems="center"
