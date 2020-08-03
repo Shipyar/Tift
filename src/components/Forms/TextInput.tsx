@@ -3,7 +3,6 @@ import { TextInput as RNTextInput, StyleSheet, TextInputProps as RNTextInputProp
 
 import { Box } from '../../components/Theme';
 import Icon from '../../components/Icons/Icon';
-import { preventAutoHide } from 'expo/build/launch/SplashScreen';
 
 interface TextInputProps extends RNTextInputProps {
   placeholder: string;
