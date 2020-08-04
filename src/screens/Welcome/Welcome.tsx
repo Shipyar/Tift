@@ -1,13 +1,8 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { Box, Text } from '../../components/Theme';
 import { Button } from '../../components';
 
 import { Routes, StackNavigationProps } from '../../components/Navigation';
-
-interface WelcomeProps {
-   
-}
 
 const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
    return (
@@ -42,5 +37,3 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
 }
 
 export default Welcome
-
-const styles = StyleSheet.create({})

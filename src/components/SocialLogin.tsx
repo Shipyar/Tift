@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { Icon } from "../components";
+import Icon from "../components/Icons/Icon";
 import { Box } from "../components/Theme";
 
 interface SocialIconProps {
