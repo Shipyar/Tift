@@ -5,7 +5,7 @@ import { Box } from "../components/Theme";
 
 interface SocialIconProps {
   children: ReactNode;
-};
+}
 
 const SocialIcon = ({ children }: SocialIconProps) => {
   return (
@@ -20,14 +20,20 @@ const SocialIcon = ({ children }: SocialIconProps) => {
     >
       {children}
     </Box>
-  )
-}
+  );
+};
 
 const SocialLogin = () => {
   return (
     <Box flexDirection="row" justifyContent="center">
       <SocialIcon>
-        <Icon name="icon-google" fill="#000" width={20} height={20} stroke="none" />
+        <Icon
+          name="icon-google"
+          fill="#000"
+          width={20}
+          height={20}
+          stroke="none"
+        />
       </SocialIcon>
     </Box>
   );

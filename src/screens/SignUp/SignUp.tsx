@@ -13,7 +13,7 @@ import {
 } from "../../components";
 import { Routes, StackNavigationProps } from "../../components/Navigation";
 
-const LoginSchema = Yup.object().shape({
+const SignUpSchema = Yup.object().shape({
   password: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -21,7 +21,7 @@ const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
+const SignUp = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   const password = useRef<typeof TextInput>(null);
 
   const footer = (
@@ -30,14 +30,14 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
       <Box alignItems="center">
         <Button
           variant="transparent"
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => navigation.navigate("Login")}
         >
           <Box flexDirection="row" justifyContent="center" flex={1}>
             <Text marginTop="s" color="white">
-              Don't have an account?{" "}
+              Already have an Account?{" "}
             </Text>
             <Text marginTop="s" marginLeft="s" color="welcomeGrey">
-              Sign up here
+              Login here
             </Text>
           </Box>
         </Button>
@@ -46,18 +46,18 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   );
 
   return (
-    <Container {...{ footer }}>
+    <Container footer={footer}>
       <Box padding="xl">
         <Text variant="title" textAlign="center" marginBottom="l">
-          Welcome Back
+          Create an Account
         </Text>
         <Text variant="body" textAlign="center">
-          Use your credentials below to login to your account
+          Enter your details below to get started
         </Text>
         <Formik
           initialValues={{ email: "", password: "", remember: false }}
           onSubmit={(values) => console.log(values)}
-          validationSchema={LoginSchema}
+          validationSchema={SignUpSchema}
         >
           {({
             handleChange,
@@ -84,6 +84,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   returnKeyLabel="next"
                   onSubmitEditing={() => password.current?.focus()}
                 />
+
                 <TextInput
                   ref={password}
                   icon="icon-lock"
@@ -126,4 +127,4 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   );
 };
 
-export default Login;
+export default SignUp;

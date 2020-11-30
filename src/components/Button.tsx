@@ -26,10 +26,10 @@ const Button = ({ label, variant, onPress, children }: ButtonProps) => {
   const theme = useTheme<Theme>();
   const backgroundColor =
     variant === "primary"
-    ? theme.colors.green
-    : variant === "transparent"
-    ? "transparent"
-    : theme.colors.grey;
+      ? theme.colors.green
+      : variant === "transparent"
+      ? "transparent"
+      : theme.colors.grey;
   const color =
     variant === "primary" ? theme.colors.white : theme.colors.bodyText;
   return (

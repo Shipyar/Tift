@@ -5,8 +5,8 @@ import { Button, Text } from "../../components";
 
 interface SubSlideProps {
   subTitle: string;
-  description: String;
-  last?: Boolean;
+  description: string;
+  last?: boolean;
   onPress: () => void;
 }
 
@@ -19,23 +19,27 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginBottom: 12,
-    textAlign: 'center',
+    textAlign: "center",
   },
   description: {
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 40,
-  }
+  },
 });
 
 const SubSlide = ({ subTitle, description, last, onPress }: SubSlideProps) => {
   return (
     <View style={styles.container}>
-      <Text variant="smTitle" style={styles.subTitle}>{subTitle}</Text>
-      <Text variant="body" style={styles.description}>{description}</Text>
+      <Text variant="smTitle" style={styles.subTitle}>
+        {subTitle}
+      </Text>
+      <Text variant="body" style={styles.description}>
+        {description}
+      </Text>
       <Button
         label={last ? "Lets get started" : "Next"}
         variant={last ? "primary" : "default"}
-        {... { onPress }}
+        {...{ onPress }}
       />
     </View>
   );

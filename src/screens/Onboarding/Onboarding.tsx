@@ -1,25 +1,25 @@
-import React, { useRef } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { interpolateColor, useScrollHandler } from 'react-native-redash';
-import Animated, { multiply, divide } from 'react-native-reanimated';
+import React, { useRef } from "react";
+import { View, StyleSheet, Dimensions } from "react-native";
+import { interpolateColor, useScrollHandler } from "react-native-redash";
+import Animated, { multiply, divide } from "react-native-reanimated";
 
-import Slide from './Slide';
-import SubSlide from './SubSlide';
-import Dot from './Dot';
+import Slide from "./Slide";
+import SubSlide from "./SubSlide";
+import Dot from "./Dot";
 
-import { Routes, StackNavigationProps } from '../../components/Navigation';
+import { Routes, StackNavigationProps } from "../../components/Navigation";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 const BORDER_RADIUS = 75;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
   },
   slider: {
     height: 0.61 * height,
-    backgroundColor: 'cyan',
+    backgroundColor: "cyan",
     borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
@@ -27,16 +27,16 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderTopLeftRadius: BORDER_RADIUS,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
     height: BORDER_RADIUS,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 const slides = [
@@ -67,13 +67,15 @@ const slides = [
   },
 ];
 
-const Onboarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) => {
+const Onboarding = ({
+  navigation,
+}: StackNavigationProps<Routes, "Onboarding">) => {
   const scrollRef = useRef<Animated.ScrollView>(null);
-  const { scrollHandler, x } = useScrollHandler()
+  const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
-    outputRange: slides.map(slide => slide.color)
-  })
+    outputRange: slides.map((slide) => slide.color),
+  });
 
   return (
     <View style={styles.container}>
@@ -110,8 +112,9 @@ const Onboarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) 
               flex: 1,
               transform: [{ translateX: multiply(x, -1) }],
               width: width * slides.length,
-              flexDirection: 'row',
-            }}>
+              flexDirection: "row",
+            }}
+          >
             {slides.map(({ subTitle, description }, index) => {
               const last = index === slides.length - 1;
               return (
@@ -120,7 +123,7 @@ const Onboarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) 
                   {...{ subTitle, description, last }}
                   onPress={() => {
                     if (last) {
-                      navigation.navigate('Welcome');
+                      navigation.navigate("Welcome");
                     } else {
                       scrollRef.current
                         ?.getNode()
@@ -128,7 +131,7 @@ const Onboarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) 
                     }
                   }}
                 />
-              )
+              );
             })}
           </Animated.View>
         </View>

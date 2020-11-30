@@ -4,18 +4,17 @@ const palette = {
   blueDark: "#0C0D34",
   blueLight: "rgba(12, 13, 52, 0.7)",
 
-  grey: 'rgba(12, 13, 52, 0.05)',
+  grey: "rgba(12, 13, 52, 0.05)",
 
-  green: '#2CB9B0',
+  green: "#2CB9B0",
 
   black: "#0B0B0B",
   white: "#FFFFFF",
-  
 
   // tift specific
-  appGreen: '#3FC85F',
+  appGreen: "#3FC85F",
 
-  warning: '#F8AEAE',
+  warning: "#F8AEAE",
 };
 
 const theme = {
@@ -25,9 +24,10 @@ const theme = {
     bodyText: palette.blueLight,
     grey: palette.grey,
     green: palette.green,
-    welcomeGrey: '#F4F0EF',
+    welcomeGrey: "#F4F0EF",
     tiftGreen: palette.appGreen,
     warning: palette.warning,
+    lightBlue: "#BFEAF5",
   },
   spacing: {
     s: 8,
@@ -71,8 +71,8 @@ const theme = {
       fontSize: 15,
       fontFamily: "SFProText-Regular",
       color: "bodyText",
-      textAlign: 'center',
-    }
+      textAlign: "center",
+    },
   },
   breakpoints: {},
 };
